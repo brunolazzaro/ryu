@@ -1,0 +1,16 @@
+{
+  "exclude": ["**/__mocks__/*", "node_modules"],
+  "include": ["src"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "build",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
