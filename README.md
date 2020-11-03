@@ -20,4 +20,4 @@
 
 ### Testing
 **Jest**
-- `yarn test` -> Will run all files under __tests__ folders.
+- `yarn test` -> Will run all files under `__tests__` folders.
