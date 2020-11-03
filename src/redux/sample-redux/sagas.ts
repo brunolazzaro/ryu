@@ -14,7 +14,7 @@ const fetchMessage = (message: string): Promise<string> => {
 };
 
 // worker Saga: will be fired on SAMPLE_ACTION actions
-const sampleFunction = function*(action: SampleActionTypes): SagaIterator {
+const sampleFunction = function* (action: SampleActionTypes): SagaIterator {
   try {
     // This would also put() an action for indicating loading state, for example.
     const message: string = yield call(fetchMessage, action.message);
@@ -25,7 +25,7 @@ const sampleFunction = function*(action: SampleActionTypes): SagaIterator {
   }
 };
 
-const sampleSaga = function*(): SagaIterator {
+const sampleSaga = function* (): SagaIterator {
   // takeLatest will only execute once and ignore action dispatches during the execution of sampleFunction
   yield takeLatest(Types.SAMPLE_ACTION_TRIGGER, sampleFunction);
 };

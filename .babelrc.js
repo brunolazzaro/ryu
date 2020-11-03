@@ -15,8 +15,7 @@ module.exports = {
     ],
   ],
   plugins: [
-    'dynamic-import-webpack',
-    'transform-class-properties',
+    '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-object-rest-spread',
     [
       require.resolve('babel-plugin-module-resolver'),

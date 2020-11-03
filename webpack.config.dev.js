@@ -1,6 +1,6 @@
-// Require
-const webpack = require('webpack');
+process.traceDeprecation = true;
 
+// Require
 const { resolve } = require('path');
 
 const buildPath = resolve(__dirname, 'build');
@@ -10,16 +10,14 @@ const mainPath = resolve(__dirname, 'src', 'index.tsx');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const { WebpackPluginServe } = require('webpack-plugin-serve');
 
 const config = {
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080/',
-    'webpack/hot/only-dev-server',
-    mainPath,
-  ],
+  mode: 'development',
+  entry: [mainPath, 'webpack-plugin-serve/client'],
   devtool: 'inline-source-map',
   devServer: {
-    hot: true,
     contentBase: resolve(__dirname, 'build'),
     inline: true,
     publicPath: '/',
@@ -31,6 +29,9 @@ const config = {
     publicPath: '/',
     filename: 'js/bundle.js',
     chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
+  },
+  optimization: {
+    chunkIds: 'named',
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -73,12 +74,6 @@ const config = {
         ],
       },
       {
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'eslint-loader',
-      },
-      {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
@@ -90,24 +85,32 @@ const config = {
       },
       {
         exclude: [/\.html$/, /\.(js|jsx|ts|tsx)$/, /\.css$/, /\.json$/],
-        loader: 'url-loader',
-        options: {
-          name: 'assets/[hash:8].[ext]',
-        },
+        type: 'asset/inline',
       },
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: 'public/',
-        to: '[name].[ext]',
-      },
-    ]),
+    new WebpackPluginServe({
+      hmr: 'refresh-on-failure',
+      port: 3000,
+      static: buildPath,
+    }),
+    new ESLintPlugin({
+      extensions: ['js', 'ts', 'tsx'],
+      cache: true,
+      files: './src',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public/',
+          to: '[name].[ext]',
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({ inject: true, template: './src/index.html' }),
   ],
+  watch: true,
 };
 
 module.exports = config;

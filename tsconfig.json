@@ -1,6 +1,6 @@
 {
   "exclude": ["**/__mocks__/*", "node_modules"],
-  "include": ["src"],
+  "include": ["./src"],
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build",

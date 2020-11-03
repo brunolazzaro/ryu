@@ -18,7 +18,7 @@ test('App renders', () => {
     </Provider>,
   );
 
-  const link = component.root.find(el => el.type === 'a');
+  const link = component.root.find((el) => el.type === 'a');
 
   expect(link.children[0]).toBe('Hello, ');
   expect(link.children[1]).toBe('hey');

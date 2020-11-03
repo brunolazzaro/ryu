@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, MouseEvent } from 'react';
 
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { Actions as SampleActions } from 'redux/sample-redux/actions';
@@ -11,7 +11,7 @@ interface Props {
   info: string;
 }
 
-const App: React.StatelessComponent<Props> = ({ info }) => {
+const App: React.FunctionComponent<Props> = ({ info }) => {
   const dispatch = useDispatch();
   const message: string = useSelector(getMessage);
 
@@ -19,9 +19,13 @@ const App: React.StatelessComponent<Props> = ({ info }) => {
     document.title = `The info is ${info}`;
   }, [info]);
 
-  const updateMessage = useCallback(() => {
-    dispatch(SampleActions.sampleActionTrigger(info));
-  }, [dispatch, info]);
+  const updateMessage = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      dispatch(SampleActions.sampleActionTrigger(info));
+    },
+    [dispatch, info],
+  );
 
   return (
     <div>

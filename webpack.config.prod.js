@@ -12,6 +12,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = {
+  mode: 'production',
   entry: {
     main: mainPath,
     vendor: ['react', 'react-dom'],
@@ -72,11 +73,7 @@ const config = {
       },
       {
         exclude: [/\.html$/, /\.(js|jsx|ts|tsx)$/, /\.css$/, /\.json$/],
-        loader: 'url-loader',
-        options: {
-          limit: 2000,
-          name: 'assets/[hash:8].[ext]',
-        },
+        type: 'asset/resource',
       },
     ],
   },
@@ -87,12 +84,14 @@ const config = {
     },
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: 'public/',
-        to: '[path][name].[ext]',
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public/',
+          to: '[path][name].[ext]',
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: './src/index.html',

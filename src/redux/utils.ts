@@ -4,7 +4,7 @@ interface BaseAction {
 
 export const createReducer = <State, Action extends BaseAction>(
   initialState: State,
-  handlers: { [handlerName: string]: Function },
+  handlers: { [handlerName: string]: (...args: unknown[]) => State },
 ) => {
   return (state = initialState, action: Action): State => {
     const handler = handlers[action.type];
