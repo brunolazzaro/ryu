@@ -1,5 +1,3 @@
-process.traceDeprecation = true;
-
 // Require
 const { resolve } = require('path');
 
@@ -29,9 +27,6 @@ const config = {
     publicPath: '/',
     filename: 'js/bundle.js',
     chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
-  },
-  optimization: {
-    chunkIds: 'named',
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
