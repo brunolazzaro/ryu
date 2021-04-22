@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 // Require
 const { resolve } = require('path');
 
@@ -50,7 +52,7 @@ const config = {
               sourceMap: true,
             },
           },
-          'postcss-loader?sourceMap',
+          'postcss-loader',
         ],
       },
       {
@@ -65,7 +67,7 @@ const config = {
               sourceMap: true,
             },
           },
-          'postcss-loader?sourceMap',
+          'postcss-loader',
         ],
       },
       {
@@ -79,7 +81,7 @@ const config = {
         loader: 'ts-loader',
       },
       {
-        exclude: [/\.html$/, /\.(js|jsx|ts|tsx)$/, /\.css$/, /\.json$/],
+        exclude: [/(^|\.(svg|css|json|js|jsx|ts|tsx|html))$/],
         type: 'asset/inline',
       },
     ],

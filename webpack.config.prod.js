@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 // Require
 const path = require('path');
 
@@ -71,7 +73,7 @@ const config = {
         loader: 'ts-loader',
       },
       {
-        exclude: [/\.html$/, /\.(js|jsx|ts|tsx)$/, /\.css$/, /\.json$/],
+        exclude: [/(^|\.(svg|css|json|js|jsx|ts|tsx|html))$/],
         type: 'asset/resource',
       },
     ],
@@ -87,7 +89,7 @@ const config = {
       patterns: [
         {
           from: 'public/',
-          to: '[path][name].[ext]',
+          to: '[path][name][ext]',
         },
       ],
     }),
