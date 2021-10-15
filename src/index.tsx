@@ -9,4 +9,4 @@ import 'css/global.css';
 // Render
 const root = document.getElementById('root');
 
-ReactDOM.render(<App info="hey" />, root);
+ReactDOM.render(<App info="world" />, root);
