@@ -7,7 +7,7 @@ interface Props {
   info: string;
 }
 
-const App: React.FunctionComponent<Props> = ({ info }) => {
+const App: React.FunctionComponent<Props> = function ({ info }) {
   useEffect(() => {
     document.title = `The info is ${info}`;
   }, [info]);
