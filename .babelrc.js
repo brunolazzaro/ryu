@@ -10,12 +10,11 @@ module.exports = {
           ],
         },
         useBuiltIns: 'usage',
-        corejs: '3.0.0',
+        corejs: '3.30'
       },
     ],
   ],
   plugins: [
-    '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-object-rest-spread',
     [
       require.resolve('babel-plugin-module-resolver'),
