@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import App from 'components/App';
 
@@ -7,6 +7,6 @@ import App from 'components/App';
 import 'css/global.css';
 
 // Render
-const root = document.getElementById('root');
-
-ReactDOM.render(<App info="world" />, root);
+const domNode = document.getElementById('root');
+const root = createRoot(domNode);
+root.render(<App info="world" />);
