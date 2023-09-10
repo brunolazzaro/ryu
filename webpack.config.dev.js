@@ -71,14 +71,9 @@ const config = {
         ],
       },
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'ts-loader',
+        test: /\.([jt]sx?)?$/,
+        use: 'swc-loader',
+        exclude: /node_modules/,
       },
       {
         exclude: [/(^|\.(svg|css|json|js|jsx|ts|tsx|html))$/],

@@ -8,8 +8,7 @@ module.exports = {
     '\\.(css)$': 'identity-obj-proxy',
   },
   transform: {
-    '^.+\\.js$': 'babel-jest',
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.(t|j)sx?$': ['@swc/jest'],
   },
   modulePaths: ['<rootDir>/src', '<rootDir>/node_modules'],
 };

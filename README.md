@@ -4,22 +4,22 @@ For a more robust setup check out something like https://astro.build/ or https:/
 
 ### Defaults
 - **TypeScript 5.2.2**
-- **Babel 7** (`preset-env` set to ">2%, last 1 edge version, last 2 safari version, not ie 11, not op_mini all").
+- **SWC** (compatibility set to ">2%, last 1 edge version, last 2 safari version, not ie 11, not op_mini all").
 - **PostCSS** (CSS Modules + CSSNano)
 - **React** (^18.2.0)
 - **React Router**
 
 ### How to run locally
-- `yarn install`
-- `yarn start`
+- `bun install`
+- `bun run start`
 
 ### Build for production
-- `yarn build` -> Will output a build folder
+- `bun run build` -> Will output a build folder
 
 ### Linting
 **ESLint & Prettier** (Using AirBnB defaults + TypeScript)
-- `yarn lint` -> Will lint all code under `src` folder.
+- `bun run lint` -> Will lint all code under `src` folder.
 
 ### Testing
 **Jest**
-- `yarn test` -> Will run all files under `__tests__` folders.
+- `bun run test` -> Will run all files under `__tests__` folders.

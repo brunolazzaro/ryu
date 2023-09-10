@@ -3,12 +3,12 @@
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/stylistic",
     "plugin:prettier/recommended",
     "plugin:import/errors"
   ],
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "ecmaFeatures": {
       "modules": true,
@@ -26,7 +26,6 @@
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      "babel-module": {},
       "typescript": {}
     },
     "react": {
@@ -39,7 +38,7 @@
       "parser": "@typescript-eslint/parser"
     }
   ],
-  "plugins": ["babel", "react", "prettier", "import", "@typescript-eslint"],
+  "plugins": ["react", "prettier", "import", "@typescript-eslint"],
   "rules": {
     "strict": [0, "global"],
     "func-names": [2, "never"],

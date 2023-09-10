@@ -1,4 +1,4 @@
 declare module '*.css' {
-  const exports: { [styleName: string]: string };
+  const exports: Record<string, string>;
   export = exports;
 }
