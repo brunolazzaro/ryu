@@ -4,7 +4,7 @@
 # Check if either "bun" or "yarn" command exists
 if command -v bun >/dev/null 2>&1; then
   # "bun" command exists
-  bun lint && bun test
+  bun run lint && bun run test
 elif command -v yarn >/dev/null 2>&1; then
   # "yarn" command exists
   yarn lint && yarn test
