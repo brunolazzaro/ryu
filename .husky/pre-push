@@ -1,4 +1,15 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint && yarn test
+# Check if either "bun" or "yarn" command exists
+if command -v bun >/dev/null 2>&1; then
+  # "bun" command exists
+  bun lint && bun test
+elif command -v yarn >/dev/null 2>&1; then
+  # "yarn" command exists
+  yarn lint && yarn test
+else
+  # Neither "bun" nor "yarn" command found
+  echo "Error: Neither 'bun' nor 'yarn' command found." >&2
+  exit 1
+fi
